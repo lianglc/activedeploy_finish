@@ -19,7 +19,7 @@ set -e
 set -x
 
 # Configure extension PATH
-EXT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+SCRIPTDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # Source git_util sh file
 source ${SCRIPTDIR}/git_util.sh
