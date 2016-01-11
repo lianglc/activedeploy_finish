@@ -1,5 +1,5 @@
 {
-    "id": "ibm.devops.services.pipeline.devops.control",
+    "id": "ibm.devops.services.pipeline.devops.ad_finish",
     "version": 1,
     "name_key": "ExtName",
     "desc_key": "ExtDesc",
@@ -16,33 +16,17 @@
             "name": "TARGET_PLATFORM",
             "type": "Text",
             "required": "true",
-            "default_value": "Containers",
+            "default_value": "CloudFoundary",
             "label_key": "TARGET_PLATFORM_KEY",
             "desc_key": "TARGET_PLATFORM_DESC"
         },   
         {
-            "name": "RAMPUP_TIME",
+            "name": "RAMPUP_DURATION",
             "type": "Text",
             "required": "true",
             "default_value": "10",
-            "label_key": "RAMPUP_TIME_KEY",
-            "desc_key": "RAMPUP_TIME_DESC"
-        },   
-        {
-            "name": "STANDBY_TIME",
-            "type": "Text",
-            "required": "false",
-            "default_value": "50",
-            "label_key": "STANDBY_TIME_KEY",
-            "desc_key": "STANDBY_TIME_DESC"
-        }, 
-        {
-            "name": "RAMPDOWN_TIME",
-            "type": "Text",
-            "required": "false",
-            "default_value": "10",
-            "label_key": "RAMPDOWN_TIME_KEY",
-            "desc_key": "RAMPDOWN_TIME_DESC"
+            "label_key": "RAMPUP_DURATION_KEY",
+            "desc_key": "RAMPUP_DURATION_DESC"
         }
     ],
     "outputs": [
@@ -55,8 +39,7 @@
         "type": "JenkinsDocker",
         "shell": "#!/bin/bash
 export INIT_START_TIME=$(date +\"%s\")
-export RAMPDOWN_TIME=#RAMPDOWN_TIME#
-export RAMPUP_TIME=#RAMPUP_TIME#
+export RAMPUP_DURATION=#RAMPUP_DURATION#
 export TARGET_PLATFORM=#TARGET_PLATFORM#
 set +x
 set +e"
