@@ -13,14 +13,6 @@
     ],
     "params": [
         {
-            "name": "TARGET_PLATFORM",
-            "type": "Text",
-            "required": "true",
-            "default_value": "CloudFoundary",
-            "label_key": "TARGET_PLATFORM_KEY",
-            "desc_key": "TARGET_PLATFORM_DESC"
-        },   
-        {
             "name": "RAMPUP_DURATION",
             "type": "Text",
             "required": "true",
@@ -40,7 +32,6 @@
         "shell": "#!/bin/bash
 export INIT_START_TIME=$(date +\"%s\")
 export RAMPUP_DURATION=#RAMPUP_DURATION#
-export TARGET_PLATFORM=#TARGET_PLATFORM#
 set +x
 set +e"
     }
