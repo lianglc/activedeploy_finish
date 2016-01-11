@@ -31,9 +31,11 @@
         "type": "JenkinsDocker",
         "shell": "#!/bin/bash
 export INIT_START_TIME=$(date +\"%s\")
-export RAMPUP_DURATION=#RAMPUP_DURATION#
+export RAMPDOWN_DURATION=#RAMPDOWN_DURATION#
 set +x
-set +e"
+set +e
+git_retry clone https://github.com/Osthanes/update_service.git activedeploy
+activedeploy/activedeploy_step_2.sh"
     }
     },
     "project": "https://hub.jazz.net/project/alchemy/Alchemy-Ostanes",
