@@ -34,6 +34,8 @@ export INIT_START_TIME=$(date +\"%s\")
 export RAMPDOWN_DURATION=#RAMPDOWN_DURATION#
 set +x
 set +e
+SCRIPTDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source ${SCRIPTDIR}/git_util.sh
 git_retry clone https://github.com/Osthanes/update_service.git activedeploy
 activedeploy/activedeploy_step_2.sh"
     }
