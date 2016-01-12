@@ -13,12 +13,12 @@
     ],
     "params": [
         {
-            "name": "RAMPUP_DURATION",
+            "name": "RAMPDOWN_DURATION",
             "type": "Text",
             "required": "true",
             "default_value": "10",
-            "label_key": "RAMPUP_DURATION_KEY",
-            "desc_key": "RAMPUP_DURATION_DESC"
+            "label_key": "RAMPDOWN_DURATION_KEY",
+            "desc_key": "RAMPDOWN_DURATION_DESC"
         }
     ],
     "outputs": [
