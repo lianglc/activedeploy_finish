@@ -43,7 +43,7 @@ activedeploy/activedeploy_step_2.sh",
     ],
     "execution": {
         "type": "JenkinsDocker",
-        "shell": ""#!/bin/bash
+        "shell": "#!/bin/bash
 set +x
 set +e
 export RAMPDOWN_DURATION=#RAMPDOWN_DURATION#
