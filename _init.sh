@@ -31,4 +31,4 @@ git_retry clone https://github.com/Osthanes/activedeploy_common.git common
 popd >/dev/null
 
 # Call common initialization
-common/init.sh
+$SCRIPTDIR/common/init.sh
