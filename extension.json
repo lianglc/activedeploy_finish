@@ -22,7 +22,7 @@
         },
         {
             "name": "COMMAND",
-            "type": "Text",
+            "type": "TextArea",
             "required": "true",
             "default_value": "#!/bin/bash
 set +x
