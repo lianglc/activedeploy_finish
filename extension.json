@@ -13,14 +13,6 @@
     ],
     "params": [
         {
-            "name": "RAMPDOWN_DURATION",
-            "type": "Text",
-            "required": "true",
-            "default_value": "10",
-            "label_key": "RAMPDOWN_DURATION_KEY",
-            "desc_key": "RAMPDOWN_DURATION_DESC"
-        },
-        {
             "name": "COMMAND",
             "type": "TextArea",
             "required": "true",
@@ -75,7 +67,7 @@ if [ $PIPE_SCR_RESULT -ne 0 ]; then
 fi"
     }
     },
-    "project": "https://hub.jazz.net/project/alchemy/Alchemy-Ostanes",
-    "project_example": "https://hub.jazz.net/pipeline/rjminsha/ice-pipeline_demo",
-    "project_contact": "rjminsha@us.ibm.com"
+    "project": "https://github.com/Osthanes/update_service",
+    "project_example": "https://github.com/IBM-Bluemix/active-deploy/",
+    "project_contact": "eergun@us.ibm.com"
 }
