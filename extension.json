@@ -8,8 +8,8 @@
     "inputs": [
         {
             "type": "Bluemix",
-            "inclusion" : "always"
-            "region_id": ["ibm:ys1:us-south", "ibm:yp:us-south", "ibm:ys1:eu-gb", "ibm:yp:eu-gb"]
+            "inclusion" : "always",
+            "regions": ["ibm:ys1:us-south", "ibm:yp:us-south", "ibm:ys1:eu-gb", "ibm:yp:eu-gb"]
         }
     ],
     "params": [
