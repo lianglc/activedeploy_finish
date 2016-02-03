@@ -15,9 +15,6 @@
 #   See the License for the specific language governing permissions and
 #********************************************************************************
 
-set -e
-set -x
-
 # Configure extension PATH
 SCRIPTDIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
