@@ -1,6 +1,6 @@
 # activedeploy_finish
 
-IDS pipeline extension used to complete an active deploy for Cloud Foundry applications.
+An [IBM® Bluemix® DevOps Services Build & Deploy](https://hub.jazz.net/docs/deploy/) pipeline extension used to complete an active deploy for Cloud Foundry applications.
 
 A pipeline job created from this extension must be used in the same stage with a job to deploy a single unrouted instance 
 of the successor app and a job to begin the active deploy.
