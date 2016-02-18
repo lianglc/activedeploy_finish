@@ -1,6 +1,8 @@
 # activedeploy_finish
 
-IDS pipeline extension used to complete an active deploy.
-Should be used in the same pipeline stage as an _Start Active Deploy_ job.
-Either completes the active deploy by ramping down the original group or rollback the deploy
-based on the value of the environment variable _TEST_RESULT_FOR_AD_ by intermediate (test) jobs.
+IDS pipeline extension used to complete an active deploy for Cloud Foundry applications.
+
+A pipeline job created from this extension must be used in the same stage with a job to deploy a single unrouted instance 
+of the successor app and a job to begin the active deploy.
+
+For more details, see [here](https://hub.jazz.net/docs/deploy_ext/).
