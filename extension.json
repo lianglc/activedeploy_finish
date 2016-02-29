@@ -44,7 +44,7 @@ dpkg -l | grep '^ii' > $EXT_DIR/pkglist
 # OSSC line
 dpkg -l | grep '^ii' > $EXT_DIR/pkglist2
 if [[ $DEBUG -eq 1 ]]; then
-  diff $EXT_DIR/pkglist $EXT_DIR/pkglist2
+  diff $EXT_DIR/pkglist $EXT_DIR/pkglist2 || true
 fi
 INIT_END_TIME=$(date +\"%s\")
 INIT_EST_TIME=$(($INIT_END_TIME-$INIT_START_TIME))
