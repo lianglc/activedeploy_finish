@@ -19,7 +19,7 @@
             "required": "true",
             "default_value": "#!/bin/bash
 source ${EXT_DIR}/git_util.sh
-git_retry clone https://github.com/${GIT_HOME}/update_service.git activedeploy
+git_retry clone https://github.com/Osthanes/update_service.git activedeploy
 activedeploy/activedeploy_step_2.sh",
             "label_key": "COMMAND_KEY",
             "desc_key": "COMMAND_DESC"
