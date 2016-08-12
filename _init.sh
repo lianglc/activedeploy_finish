@@ -24,7 +24,6 @@ source ${SCRIPTDIR}/git_util.sh
 # Get common initialization project
 pushd . >/dev/null
 cd $SCRIPTDIR
-GIT_BRANCH=${GIT_BRANCH:-master}
 git_retry clone -b ${GIT_BRANCH} https://github.com/${GIT_HOME}/activedeploy_common.git common
 popd >/dev/null
 
