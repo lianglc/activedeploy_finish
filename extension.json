@@ -1,5 +1,5 @@
 {
-    "id": "ibm.devops.services.pipeline.devops.ad_finish_prestage1",
+    "id": "ibm.devops.services.pipeline.devops.ad_finish_stage1",
     "version": 1,
     "name_key": "ExtName",
     "desc_key": "ExtDesc",
@@ -40,7 +40,9 @@ if [[ ${DEBUG_EXTENSION} -eq 1 ]]; then
   set -x
 fi
 export INIT_START_TIME=$(date +\"%s\")
-export GIT_HOME=${GIT_HOME:-IBMActiveDeploy-Toolchain}
+GIT_HOME=${GIT_HOME:-\"Osthanes\"}
+[[ \"${GIT_HOME}\" == \"Osthanes\" && \"${IDS_URL}\" == *\"stage1\"* ]] && GIT_HOME=\"IBMActiveDeploy-Toolchain\"
+export GIT_HOME
 # OSSC line
 dpkg -l | grep '^ii' > $EXT_DIR/pkglist
 . $EXT_DIR/_init.sh
