@@ -1,5 +1,5 @@
 {
-    "id": "ibm.devops.services.pipeline.devops.ad_finish",
+    "id": "ibm.devops.services.pipeline.devops.ad_finish_stage1",
     "version": 1,
     "name_key": "ExtName",
     "desc_key": "ExtDesc",
