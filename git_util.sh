@@ -63,9 +63,11 @@ git_retry() {
         export CMD_RETRY=$GIT_RETRY
     fi
     with_retry "git" $*
+    local RETURN_RC=$?
     if [ -n "$SAVE_CMD_RETRY" ]; then
         export CMD_RETRY=$SAVE_CMD_RETRY
     fi
+    return $RETURN_RC
 }
 
 #export functions

@@ -24,7 +24,9 @@ source ${SCRIPTDIR}/git_util.sh
 # Get common initialization project
 pushd . >/dev/null
 cd $SCRIPTDIR
-git_retry clone https://github.com/${GIT_HOME}/activedeploy_common.git common
+echo "git clone https://github.com/${GIT_HOME}/activedeploy_common.git common ..."
+(git_retry clone https://github.com/${GIT_HOME}/activedeploy_common.git common) &>/tmp/$$
+(( $? )) && cat "/tmp/$$"
 popd >/dev/null
 
 # Call common initialization
