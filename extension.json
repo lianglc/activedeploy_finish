@@ -36,8 +36,11 @@ activedeploy/activedeploy_step_2.sh",
         "shell": "#!/bin/bash
 
 set +e
+[[ ${DEBUG_EXTENSION} -eq 1 ]] && set -x
 export INIT_START_TIME=$(date +\"%s\")
-export GIT_HOME=${GIT_HOME:-IBMActiveDeploy-Toolchain}
+GIT_HOME=${GIT_HOME:-\"Osthanes\"}
+[[ \"${GIT_HOME}\" == \"Osthanes\" && \"${IDS_URL}\" == *\"stage1\"* ]] && GIT_HOME=\"IBMActiveDeploy-Toolchain\"
+export GIT_HOME
 # OSSC line
 dpkg -l | grep '^ii' > $EXT_DIR/pkglist
 . $EXT_DIR/_init.sh
@@ -48,7 +51,8 @@ if [[ $DEBUG -eq 1 ]]; then
 fi
 INIT_END_TIME=$(date +\"%s\")
 INIT_EST_TIME=$(($INIT_END_TIME-$INIT_START_TIME))
-echo -e \"Init runtime of `date -u -d @\"$INIT_EST_TIME\" +\'%-Mm %-Ss\'`\"# place command into a temp script file
+echo -e \"Init runtime of `date -u -d @\"$INIT_EST_TIME\" +\'%-Mm %-Ss\'`\"
+# place command into a temp script file
 cat > script.sh << '__EOF__'
 #!/bin/bash
 function save_env_vars_on_exit() {
@@ -65,10 +69,12 @@ PIPE_SCR_RESULT=$?
 source $EXT_DIR/save_vars.sh
 if [ $PIPE_SCR_RESULT -ne 0 ]; then
     exit $PIPE_SCR_RESULT
-fi"
+fi
+[[ ${DEBUG_EXTENSION} -eq 1 ]] && set +x
+"
     }
     },
     "project": "https://github.com/Osthanes/update_service",
     "project_example": "https://github.com/IBM-Bluemix/active-deploy/",
-    "project_contact": "eergun@us.ibm.com"
+    "project_contact": "taube@de.ibm.com"
 }
