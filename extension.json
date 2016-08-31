@@ -1,5 +1,5 @@
 {
-    "id": "ibm.devops.services.pipeline.devops.ad_finish_stage1",
+    "id": "ibm.devops.services.pipeline.devops.ad_finish",
     "version": 1,
     "name_key": "ExtName",
     "desc_key": "ExtDesc",
@@ -18,6 +18,17 @@
             "type": "TextArea",
             "required": "true",
             "default_value": "#!/bin/bash
+#
+# Following code will use active deploy to deploy the new application.
+# Code used is available at https://github.com/Osthanes/update_service
+# and https://github.com/Osthanes/activedeploy_common
+#
+# For details how to use and configure this active deploy toolchain extension, see
+# https://console.ng.bluemix.net/docs/services/ActiveDeploy/updatingapps.html#adpipeline
+#
+# Feel free to fork the code and define environment variable GIT_HOME to use your forked code from
+# https://github.com/${GIT_HOME}/update_service and https://github.com/${GIT_HOME}/activedeploy_common
+#
 source ${EXT_DIR}/git_util.sh
 git_retry clone https://github.com/IBMActiveDeploy-Toolchain/update_service.git activedeploy
 activedeploy/activedeploy_step_2.sh",
