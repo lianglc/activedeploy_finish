@@ -19,16 +19,17 @@
             "required": "true",
             "default_value": "#!/bin/bash
 #
-# Following code will use active deploy to deploy the new application.
-# Code used is available at https://github.com/Osthanes/update_service
-# and https://github.com/Osthanes/activedeploy_common
+# The following code uses the Active Deploy service to update your new application with zero downtime.
+# The code used is available at https://github.com/Osthanes/update_service
+# and https://github.com/Osthanes/activedeploy_common.
 #
-# For details how to use and configure this active deploy toolchain extension, see
-# https://console.ng.bluemix.net/docs/services/ActiveDeploy/updatingapps.html#adpipeline
+# For details about how to set up the Active Deploy extension for the Delivery Pipeline, see
+# https://console.ng.bluemix.net/docs/services/ActiveDeploy/updatingapps.html#adpipeline.
 #
-# Feel free to fork the code and define environment variable GIT_HOME to use your forked code from
-# https://github.com/${GIT_HOME}/update_service and https://github.com/${GIT_HOME}/activedeploy_common
+# Feel free to fork the code. After creating your fork, define the environment variable GIT_HOME to use the forked repositories with the
+# format https://github.com/${GIT_HOME}/update_service and https://github.com/${GIT_HOME}/activedeploy_common.
 #
+
 source ${EXT_DIR}/git_util.sh
 git_retry clone https://github.com/IBMActiveDeploy-Toolchain/update_service.git activedeploy 2>/tmp/$$
 (( $? )) && ( cat /tmp/$$; exit 1 )
