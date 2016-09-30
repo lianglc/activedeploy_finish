@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #********************************************************************************
-# Copyright 2015-2016 IBM
+#   (c) Copyright 2016 IBM Corp.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
 #   distributed under the License is distributed on an "AS IS" BASIS,
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
+#   limitations under the License.
 #********************************************************************************
 
 # uncomment the next line to debug this script
@@ -63,9 +64,11 @@ git_retry() {
         export CMD_RETRY=$GIT_RETRY
     fi
     with_retry "git" $*
+    local RETURN_RC=$?
     if [ -n "$SAVE_CMD_RETRY" ]; then
         export CMD_RETRY=$SAVE_CMD_RETRY
     fi
+    return $RETURN_RC
 }
 
 #export functions

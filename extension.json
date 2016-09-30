@@ -18,8 +18,21 @@
             "type": "TextArea",
             "required": "true",
             "default_value": "#!/bin/bash
+#
+# The following code uses the Active Deploy service to update your new application with zero downtime.
+# The code used is available at https://github.com/Osthanes/update_service
+# and https://github.com/Osthanes/activedeploy_common.
+#
+# For details about how to set up the Active Deploy extension for the Delivery Pipeline, see
+# https://console.ng.bluemix.net/docs/services/ActiveDeploy/updatingapps.html#adpipeline.
+#
+# Feel free to fork the code. After creating your fork, define the environment variable GIT_HOME to use the forked repositories with the
+# format https://github.com/${GIT_HOME}/update_service and https://github.com/${GIT_HOME}/activedeploy_common.
+#
+
 source ${EXT_DIR}/git_util.sh
-git_retry clone https://github.com/Osthanes/update_service.git activedeploy
+git_retry clone https://github.com/IBMActiveDeploy-Toolchain/update_service.git activedeploy 2>/tmp/$$
+(( $? )) && ( cat /tmp/$$; exit 1 )
 activedeploy/activedeploy_step_2.sh",
             "label_key": "COMMAND_KEY",
             "desc_key": "COMMAND_DESC"
@@ -36,8 +49,11 @@ activedeploy/activedeploy_step_2.sh",
         "shell": "#!/bin/bash
 
 set +e
+[[ ${DEBUG_EXTENSION} -eq 1 ]] && set -x
 export INIT_START_TIME=$(date +\"%s\")
-export GIT_HOME=${GIT_HOME:-Osthanes}
+GIT_HOME=${GIT_HOME:-\"Osthanes\"}
+[[ \"${GIT_HOME}\" == \"Osthanes\" && \"${IDS_URL}\" == *\"stage1\"* ]] && GIT_HOME=\"IBMActiveDeploy-Toolchain\"
+export GIT_HOME
 # OSSC line
 dpkg -l | grep '^ii' > $EXT_DIR/pkglist
 . $EXT_DIR/_init.sh
@@ -48,7 +64,8 @@ if [[ $DEBUG -eq 1 ]]; then
 fi
 INIT_END_TIME=$(date +\"%s\")
 INIT_EST_TIME=$(($INIT_END_TIME-$INIT_START_TIME))
-echo -e \"Init runtime of `date -u -d @\"$INIT_EST_TIME\" +\'%-Mm %-Ss\'`\"# place command into a temp script file
+echo -e \"Init runtime of `date -u -d @\"$INIT_EST_TIME\" +\'%-Mm %-Ss\'`\"
+# place command into a temp script file
 cat > script.sh << '__EOF__'
 #!/bin/bash
 function save_env_vars_on_exit() {
@@ -65,10 +82,12 @@ PIPE_SCR_RESULT=$?
 source $EXT_DIR/save_vars.sh
 if [ $PIPE_SCR_RESULT -ne 0 ]; then
     exit $PIPE_SCR_RESULT
-fi"
+fi
+[[ ${DEBUG_EXTENSION} -eq 1 ]] && set +x
+"
     }
     },
     "project": "https://github.com/Osthanes/update_service",
     "project_example": "https://github.com/IBM-Bluemix/active-deploy/",
-    "project_contact": "eergun@us.ibm.com"
+    "project_contact": "taube@de.ibm.com"
 }

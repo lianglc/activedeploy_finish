@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #********************************************************************************
-# Copyright 2016 IBM
+#   (c) Copyright 2016 IBM Corp.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
 #   distributed under the License is distributed on an "AS IS" BASIS,
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
+#   limitations under the License.
 #********************************************************************************
 
 # Configure extension PATH
@@ -24,7 +25,9 @@ source ${SCRIPTDIR}/git_util.sh
 # Get common initialization project
 pushd . >/dev/null
 cd $SCRIPTDIR
-git_retry clone https://github.com/${GIT_HOME}/activedeploy_common.git common
+echo "git clone https://github.com/${GIT_HOME}/activedeploy_common.git common ..."
+(git_retry clone https://github.com/${GIT_HOME}/activedeploy_common.git common) &>/tmp/$$
+(( $? )) && ( cat "/tmp/$$"; exit 1)
 popd >/dev/null
 
 # Call common initialization
