@@ -51,7 +51,7 @@ activedeploy/activedeploy_step_2.sh",
 set +e
 [[ ${DEBUG_EXTENSION} -eq 1 ]] && set -x
 export INIT_START_TIME=$(date +\"%s\")
-[[ -z \"${GIT_HOME}\" && \"${IDS_URL}\" == *\"stage1\"* ]] && GIT_HOME=\"IBMActiveDeploy-Toolchain\"
+[[ -z \"${GIT_HOME}\" && \"${IDS_URL}\" == *\"stage1\"*  && \"${IDS_URL}\" != *\"integration\"* ]] && GIT_HOME=\"IBMActiveDeploy-Toolchain\"
 GIT_HOME=${GIT_HOME:-\"Osthanes\"}
 export GIT_HOME
 # OSSC line
